@@ -1,0 +1,122 @@
+/*页面基础CSS（固定）*/
+body{
+    font-size: 16px;
+}
+a{
+ color:black;
+ text-decoration:none;
+}
+h4{
+    margin-left:20px;
+    margin-right:20px;
+}
+td{
+    padding:10px;
+}
+#notice{
+    width: 200px;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    color:white;
+    background-color:red;
+}
+#headcontent
+{   background-color:#5F9EA0;
+    color:white;
+    text-align:center;
+    padding:5px;
+
+}
+/*菜单*/
+#menucontent{
+    width: 250px;
+    font-size: 18px;
+    color:white;
+    float: left;
+    height: 600px;
+    background-color:#5F9EA0 ;
+}
+/*控制主体内容*/
+#secmenu{
+ 
+    margin-left: 15px;
+    width: 800px;
+    float: left;  
+}
+#shpzlnew{
+    position: absolute;
+    top:170px;
+    left: 285px;
+    width: 1000px;
+}
+#seeallshpzl{
+    position: absolute;
+    top:5px;
+}
+#uploadpanel{
+    
+    width: 400px;
+height: 300px;
+}
+#image{
+    width:400px;
+     height:270px;
+}
+
+#yypic{
+    position: absolute;
+    top:0px;
+    left: 1000px;
+    width: 200px;
+
+
+}
+
+#pictureup{
+    position: absolute;
+    top:280px;
+    left: 600px;
+    width: 200px;
+
+
+}
+/*游离的CSS*/
+.hidden{
+    visibility:hidden;
+}
+.display
+{
+    visibility:visible;
+}
+.selected
+{   font-size: 19px;
+   color:white;
+}
+.nuselected{
+    font-size: 18px;
+    color:black;
+}
+
+.canuse{
+    display: inline;
+
+}
+
+.cannotuse{
+    display: none;
+}
+.addborder{
+    border: 1px solid black;
+}
+
+.itemsize{
+    height: 20px;
+    width: 20px;
+}
+.tdchanger{
+    padding: 0px;
+}
+.urlcontrol{
+    width: 300px;
+}
