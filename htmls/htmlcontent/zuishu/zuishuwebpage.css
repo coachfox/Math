@@ -1,0 +1,38 @@
+
+body{
+    font: normal 100% Helvetica, Arial, sans-serif;
+   
+}
+
+h1{
+
+    font-size: 1.5em; 
+}
+h2{
+    font-size: 1.0em; 
+}
+canvas {
+    border: 1px solid black;
+    
+}
+label{
+    width: 50em;
+}
+
+#head{
+    text-align: center;
+    color:red;
+}
+#maincontent{
+    width: 30%;
+}
+
+  
+
+  
+ .settd{
+     color: red;
+     font-size: 1.2em;
+     font-weight: bold;
+     width: 200px;
+ }
