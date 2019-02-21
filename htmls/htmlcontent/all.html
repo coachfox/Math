@@ -1,0 +1,102 @@
+<!--二级菜单-->
+<div id="secmenu"><table>
+<tr><td><a href="#" id="newshp"><h3>商品基础资料</h3></a></td>
+<td><a href="#" id="seeshpzl"><h3>商品资料一览</h3></a></td>
+</tr>
+</table>
+</div>
+<!--主页面显示内容-->
+<!--第一个页面内容-->
+<div id="notice">
+   <p><h4>请注意：由于服务器资源限制，当前图片上传模式为上传图片URL地址。明细图片最多上传5张，如不足5张，请留白。</h4></p> 
+</div>
+<div id="shpzlnew">
+<label><h3>商品基础资料：</h3></label><input type="button" value="解锁商品锁定" id="unlockshpname"></input><label><h3>资料当前状态为:<label id="showshpzt"></h3></label>
+<table><tr>
+    <tr>
+    <td >*商品名：</td>
+    <td ><input type="text" id="shpname" class="zjcontrol"/>&nbsp&nbsp&nbsp<label id="checkshp"></label></td>
+    <td >蛋白质（g）：</td>
+    <td ><input type="text" id="danbaizhi" class="zjcontrol" disabled="true"/></td>
+    </tr>
+    <td >*价格：（元）</td>
+    <td ><input type="text" id="shpprice" class="zjcontrol"/></td>
+    <td >碳水化合物（g）：</td>
+    <td ><input type="text" id="tanshui" class="zjcontrol"/></td>
+    <tr>
+    <td >脂肪：</td>
+    <td ><input type="text" id="zhifang" class="zjcontrol"/></td>
+    <td >纤维素（g）：</td>
+    <td ><input type="text" id="xianweisu" class="zjcontrol"/></td>
+    </tr>
+   
+    
+    <tr> 
+            <td>商品类别：</td>
+            <td>
+            <select class="zjcontrol" id="shplb">
+                <option value="lightfood"">轻食类</option>
+                <option value="lightdrink">轻饮品</option>
+            </select></td>
+    </tr>
+ <tr>
+    <td >商品简介：</td>
+    <td ><textarea name="message" rows="10" cols="40" id="shpjj"></textarea></td>
+    
+    </tr>
+  
+    <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td > <input type="button" id="tijiao"  value="提交商品资料" class="zjcontrol"/></td>
+    </tr>
+    </table> 
+<div id="pictureup">
+        <table>
+        
+         
+               <tr><td>商品对应封面图片URL：</td></tr> 
+               <tr><td class="tdchanger"><input type="text" id="mainpicurl" class="urlcontrol"/></td></tr>
+               <tr> <td>商品对应明细图片URL：</td>
+                
+            </tr>
+
+                <tr><td class="tdchanger"><input type="text" id="detailpicurl1" class="urlcontrol"/></td></tr>
+                <tr><td class="tdchanger"><input type="text" id="detailpicurl2" class="urlcontrol"/></td></tr>
+                <tr><td class="tdchanger"><input type="text" id="detailpicurl3" class="urlcontrol"/></td></tr>
+                <tr><td class="tdchanger"><input type="text" id="detailpicurl4" class="urlcontrol"/></td></tr>
+                <tr><td class="tdchanger"><input type="text" id="detailpicurl5" class="urlcontrol"/></td></tr>
+               
+            
+        </table>
+</div>
+<div id="yypic">
+        <div id="upimg"><input type="button" id="uploadfile" value="上传图片"/></br>
+               <div id="uploadpanel">
+                 <img id="image"/>
+                  <form id="uploadForm" enctype="multipart/form-data" >
+                  <input type="file" id="file" name="file" /><br/>
+               是否封面图片：<input id="ismainpic" type="checkbox"  />
+                  </form>
+                   <br/>
+                   <button id="upload">上传</button>
+               </div>
+       </div>   
+       <div> <h3>当前商品已有图片:</h3><br/>
+        <table id="haspicdisplay">  
+        </table> 
+     </div>             
+</div>
+
+   <div id="seeallshpzl">
+
+</div>    
+</div>
+
+<!--第二个页面内容-->
+<div id="page2panel">
+<table id="allshp">
+        <tbody></tbody>
+</table>
+</div>
