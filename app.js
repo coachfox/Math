@@ -43,11 +43,12 @@ app.use(config.zuishuweb, function (req, res) {
    });
 // 查询追溯数据
 app.use(config.zuishuget, function (req, res) {
-    let shpplu=req.query.shpplu;
+    postgetfix.doget(currentdatabase,'zuishu',req, res)
+   /*let shpplu=req.query.shpplu;
   MongoClient.connect(url, function(err, db) {
     var dbo = db.db("allcontent");
     if(shpplu==="all"){
-        dbo.collection("zuishu").find({}).project({_id: 1,pzmc:1,shpplu:1 }).toArray(function(err, result) {
+        dbo.collection("zuishu").find({}).project({}).toArray(function(err, result) {
             //判断返回的结果是否为空
                     res.send(result);    
         })
@@ -61,7 +62,7 @@ app.use(config.zuishuget, function (req, res) {
            
     })
  }
-})
+})*/
    });
 //提交追溯资料数据,更新或者插入
 //postgetfix.dopost(currentdatabase,'zuizhu','insert')
@@ -95,7 +96,7 @@ app.use(config.deltczl, function (req, res) {
 ///////////////////////
 
 ///根据商品名字返回查询数据
-//postgetfix.doget(currentdatabase,'spzl',req,res)
+
 
 //提交新增商品资料处理
 app.use(config.submitspzl,function(req,res)
