@@ -111,7 +111,7 @@ function getalltczl(ob,query){
     $.ajax({
         url:ajaxdir+"getalltczl",
         type:"get",
-        data:{gz:ob,query:query},
+        data:{gz:ob,query:query,cond:""},
         datatype:'json',
         success:function(data){
       if(ob==="all"){
