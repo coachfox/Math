@@ -11,7 +11,7 @@ $(document).ready(
 initcom(false);
 
 //数据载入
-   $.get(ajaxdir+'zuishuget',{"shpplu":"all"},function(data,status){
+   $.get(ajaxdir+'zuishuget',{gz:"all","cond":{_id: 1,pzmc:1,shpplu:1 }},function(data,status){
        
        if(data.length===0){
        
