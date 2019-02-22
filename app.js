@@ -87,17 +87,7 @@ app.use(config.getalltczl, function (req, res) {
 
 /////删除团操资料
 app.use(config.deltczl, function (req, res) {
-    MongoClient.connect(url, function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("allcontent");
-        let vvid=ObjectId(req.query.id);
-       
-            dbo.collection("aishangtczl").deleteOne({"_id":vvid},(err,result)=>{
-                res.send("删除成功！")
-           
-            })
-    })
-
+  postgetfix.dodelete(currentdatabase,'aishangtczl',req,res)
 })
 
 //预约功能
