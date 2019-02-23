@@ -65,7 +65,7 @@ initcom(false);
             "img2":Pimg2,
             "img3":Pimg3,
             "img4":Pimg4,
-            "insert":"y"
+            "gz":"insert"
             };
             $.post(ajaxdir+'submitzhuisuzl',postquery,function(data,status){
 
@@ -104,19 +104,20 @@ initcom(false);
         })
         $('#upplu').keydown(function(event){
             if(event.keyCode===13){
-                $.get(ajaxdir+'zuishuget',{"shpplu":$('#upplu').val()},function(data,status){
-                    if(data.shpplu===$('#upplu').val()){
-                        $("#uppzmc").val(data.pzmc);  
-                        $("#upgys").val(data.gys);
-                        $("#upjyz").val(data.jyz);
-                       $("#upcd").val(data.cd);
-                         $("#upscdw").val(data.scdw);
-                         $("#upzzsj").val(data.zzsj);
-                         $("#upsssj").val(data.sssj);
-                       $("#upimg1").val(data.img1);
-                         $("#upimg2").val(data.img2);
-                          $("#upimg3").val(data.img3);
-                         $("#upimg4").val(data.img4);
+                $.get(ajaxdir+'zuishuget',{query:$('#upplu').val(),gz:"single",cond:""},function(data,status){
+                 
+                   if(data[0].shpplu===$('#upplu').val()){
+                        $("#uppzmc").val(data[0].pzmc);  
+                        $("#upgys").val(data[0].gys);
+                        $("#upjyz").val(data[0].jyz);
+                       $("#upcd").val(data[0].cd);
+                         $("#upscdw").val(data[0].scdw);
+                         $("#upzzsj").val(data[0].zzsj);
+                         $("#upsssj").val(data[0].sssj);
+                       $("#upimg1").val(data[0].img1);
+                         $("#upimg2").val(data[0].img2);
+                          $("#upimg3").val(data[0].img3);
+                         $("#upimg4").val(data[0].img4);
                          initcom(true);
                     }else{
                         alert("数据库中无此项数据");
