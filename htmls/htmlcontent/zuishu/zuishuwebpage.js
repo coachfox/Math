@@ -60,23 +60,23 @@ $(document).ready(
         $("#maincontent").css("width",Cwidth+"px");
         var searchd = window.location.search
          searchd=searchd.slice(8,300);
-      
-        $.get(ajaxdir+'zuishuget',{"shpplu":searchd},function(data,status){
+         
+        $.get(ajaxdir+'zuishuget',{query:searchd,gz:"single",cond:""},function(data,status){
            
-              $('#pzmc').html(data.pzmc);
-              $("#zjqk").html(data.zjqk);
-              $("#cd").html(data.cd);
-              $("#gys").html(data.gys);
-              $("#jyz").html(data.jyz);
-              $("#scdw").html(data.scdw);
-              $("#zzsj").html(data.zzsj);
-              $("#sbdm").html(data.sbdm);
-              $("#sssj").html(data.sssj);
+              $('#pzmc').html(data[0].pzmc);
+              $("#zjqk").html(data[0].zjqk);
+              $("#cd").html(data[0].cd);
+              $("#gys").html(data[0].gys);
+              $("#jyz").html(data[0].jyz);
+              $("#scdw").html(data[0].scdw);
+              $("#zzsj").html(data[0].zzsj);
+              $("#sbdm").html(data[0].sbdm);
+              $("#sssj").html(data[0].sssj);
               
-             im1.src=data.img1===""?"http://132.232.109.62/images/images/havenopic.jpg":data.img1;
-             im2.src=data.img2===""?"http://132.232.109.62/images/images/havenopic.jpg":data.img2;
-             im3.src=data.img3===""?"http://132.232.109.62/images/images/havenopic.jpg":data.img3;
-             im4.src=data.img4===""?"http://132.232.109.62/images/images/havenopic.jpg":data.img4;
+             im1.src=data[0].img1===""?"http://132.232.109.62/images/images/havenopic.jpg":data[0].img1;
+             im2.src=data[0].img2===""?"http://132.232.109.62/images/images/havenopic.jpg":data[0].img2;
+             im3.src=data[0].img3===""?"http://132.232.109.62/images/images/havenopic.jpg":data[0].img3;
+             im4.src=data[0].img4===""?"http://132.232.109.62/images/images/havenopic.jpg":data[0].img4;
               
            
         })
