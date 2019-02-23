@@ -36,7 +36,7 @@ app.use(config.zuishu, function (req, res) {
     res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
  res.end(makehtml.makehtml('zuishumainpage'));
    });
-///追溯网页
+///追溯信息页
 app.use(config.zuishuweb, function (req, res) {
     res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
  res.end(makehtml.makehtml('zuishuwebpage'));
@@ -44,27 +44,11 @@ app.use(config.zuishuweb, function (req, res) {
 // 查询追溯数据
 app.use(config.zuishuget, function (req, res) {
     postgetfix.doget(currentdatabase,'zuishu',req, res)
-   /*let shpplu=req.query.shpplu;
-  MongoClient.connect(url, function(err, db) {
-    var dbo = db.db("allcontent");
-    if(shpplu==="all"){
-        dbo.collection("zuishu").find({}).project({}).toArray(function(err, result) {
-            //判断返回的结果是否为空
-                    res.send(result);    
-        })
-    } 
-    else{
-    dbo.collection("zuishu").find({"shpplu":shpplu}).toArray(function(err, result) {
-        //判断返回的结果是否为空
-        
-          console.log(result[0]);
-                res.send(result[0]);
-           
-    })
- }
-})*/
    });
 //提交追溯资料数据,更新或者插入
+app.use(config.submitzhuisuzl, function (req, res) {
+    postgetfix.dopost(currentdatabase,'zuishu',req, res)
+   });
 //postgetfix.dopost(currentdatabase,'zuizhu','insert')
 //postgetfix.dopost(currentdatabase,'zuizhu','update')
 //////////////////
@@ -211,7 +195,6 @@ app.post(config.uploadfile,function(req,res){
         //如果文件夹不存在就创建文件夹
         read.filefoldermaker(systempicpath,shppicfolder);
     var form = new multiparty.Form({uploadDir:path.join(__dirname, "./img/",shppicfolder)});//存放路径
-   
     form.parse(req, function (err, fields, files) {
        
         if(err) res.json({msg:"文件上传失败！"});
