@@ -95,7 +95,8 @@ initcom(false);
                 let  r= confirm("确定删除?")
               if(r) 
                {
-              $.get(ajaxdir+'delshpzl',{"zuishuid":"y","id":$("#readydel").val()},function(data,status){
+               let postqueryd={"id":$("#readydel").val()}
+              $.get(ajaxdir+'delzszl',postqueryd,function(data,status){
                 alert(data);
                 location.reload();
               })}
