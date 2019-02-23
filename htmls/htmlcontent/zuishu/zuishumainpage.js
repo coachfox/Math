@@ -105,7 +105,6 @@ initcom(false);
         $('#upplu').keydown(function(event){
             if(event.keyCode===13){
                 $.get(ajaxdir+'zuishuget',{query:$('#upplu').val(),gz:"single",cond:""},function(data,status){
-                 
                    if(data[0].shpplu===$('#upplu').val()){
                         $("#uppzmc").val(data[0].pzmc);  
                         $("#upgys").val(data[0].gys);
@@ -127,6 +126,7 @@ initcom(false);
             }
 
         })
+        ////更新
         $("#upchange").bind('click',()=>{
             let postquery1={"shpplu":$("#upplu").val().trim(),
             "pzmc":$("#uppzmc").val().trim(),
@@ -142,7 +142,7 @@ initcom(false);
             "img2":$("#upimg2").val().trim(),
             "img3":$("#upimg3").val().trim(),
             "img4":$("#upimg4").val().trim(),
-            "update":"y"
+            "gz":"update"
             };
             $.post(ajaxdir+'submitzhuisuzl',postquery1,function(data,status){
                 initcom(false);
