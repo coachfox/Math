@@ -150,6 +150,11 @@ initcom(false);
             })
 
         })
+
+        //解除锁定
+        $("#unlockupplu").bind('click',()=>{
+            initcom(false)
+        })
     })
 
     function initcom(canuse){
@@ -181,5 +186,18 @@ initcom(false);
         $("#upimg3").attr("disabled","false");
         $("#upimg4").attr("disabled","false");
         $("#upchange").attr("disabled","false");
+     
+        $("#uppzmc").val("");
+          $("#upgys").val("");
+          $("#upjyz").val("");
+         $("#upcd").val("");
+           $("#upscdw").val("");
+           $("#upzzsj").val("");
+           $("#upsssj").val("");
+         $("#upimg1").val("");
+           $("#upimg2").val("");
+            $("#upimg3").val("");
+           $("#upimg4").val("");
+
     }
     }
