@@ -49,8 +49,7 @@ app.use(config.zuishuget, function (req, res) {
 app.use(config.submitzhuisuzl, function (req, res) {
     postgetfix.dopost(currentdatabase,'zuishu',req, res)
    });
-//postgetfix.dopost(currentdatabase,'zuizhu','insert')
-//postgetfix.dopost(currentdatabase,'zuizhu','update')
+
 //////////////////
 /*爱尚健身 */
 /* 后台 */
