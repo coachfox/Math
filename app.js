@@ -49,7 +49,10 @@ app.use(config.zuishuget, function (req, res) {
 app.use(config.submitzhuisuzl, function (req, res) {
     postgetfix.dopost(currentdatabase,'zuishu',req, res)
    });
-
+///删除追溯数据资料
+app.use(config.delzszl, function (req, res) {
+    postgetfix.dodelete(currentdatabase,'zuishu',req,res)
+  })
 //////////////////
 /*爱尚健身 */
 /* 后台 */
@@ -232,7 +235,7 @@ app.post(config.uploadfile,function(req,res){
 })*/
 ////商品删除
 
-////删除商品资料
+////删除追溯资料
 app.use(config.delshpzl,function(req,res){
     MongoClient.connect(url,(err, db)=>{
         var dbo = db.db("allcontent");
