@@ -4,9 +4,9 @@ var ObjectId = require('mongodb').ObjectID;
 var querystring = require('querystring');
 //需要下载模块
 const multiparty = require('multiparty');
-const waferSession = require('wafer-node-session'); 
-/*const MongoStore = require('connect-mongo')(waferSession);
-var MongoClient = require('mongodb').MongoClient;*/
+/*const waferSession = require('wafer-node-session'); 
+const MongoStore = require('connect-mongo')(waferSession);*/
+var MongoClient = require('mongodb').MongoClient;
 const path=require('path');
 //获取read方法
 const read=require(path.join(__dirname,"./lib/readfileutil.js"));
@@ -79,6 +79,42 @@ app.use(config.deltczl, function (req, res) {
 
 //预约功能
 
+//初始化预约功能，
+
+app.use(config.yycourceini,function(req,res){
+   /* rq: currentall,
+    userid: thisOpenId,
+    todaycourceid: that.data.todaycourceid,
+    //not going to class 上课状态
+    inclassstu: "n",
+    //yuyue staute 预约状态
+    yyflagstu:"n"*/
+
+    // JSON化传过来的数据
+   
+   var json1=JSON.parse(req.query.todaycourceid)
+  
+    console.log(json1)
+    console.log(json1[1].tcid)
+    for(let i=0;i<json1.length;i++)
+    {
+        var wherestr={rq:req.query.rq,userid:"req.query.userid",todaycourceid:json1[i].tcid}
+        ////检查今天的特定会员的课程是否存在在预约课程表里
+         ///如果存在，就不创建，不存在就创建
+    }
+
+
+    
+   
+
+})
+//判断当前日期预约资料是否存在，若存在就不重建资料，不存在就重建
+app.use(config.yycource, function (req, res) {
+var wherestr={rq:req.query.rq,userid:"req.query.userid",yycourceid:req.query.yycourceid}
+var cond={rq:req.query.rq,userid:"req.query.userid",yycourceid:req.query.yycourceid,stu:req.query.stu,gz:req.query.gz}
+postgetfix.checkexist(currentdatabase,'aishangtcyyzl',wherestr,cond,res)
+
+  })
 ///////////////////////
 
 ///根据商品名字返回查询数据
@@ -207,51 +243,11 @@ app.post(config.uploadfile,function(req,res){
 }
     });
 
-   //获取ALL商品资料
-  // postgetfix.doget(config.getshpzl,'allcontent','spzl')
-
-///小程序获取所有商品资料
-/*app.use(config.lgetshpzl,function(req,res){
-  
-    MongoClient.connect(url,(err, db)=>{
-        var dbo = db.db("allcontent");
-        if(req.query.gz==='getpandect'){
-        dbo.collection("spzl").find({}).project({_id: 1,shpname:1,shpprice:1,mainpicurl:1,shplb:1 }).toArray(function(err, result) {
-            //判断返回的结果是否为空
-            res.send(result);
-        })
-    }if(req.query.gz==='getdetailcontent'){
-        
-        let shpid=ObjectId(req.query.shpidd); 
-        dbo.collection("spzl").find({"_id":shpid}).project({shplb:0,mainpicurl:0 }).toArray(function(err, result) {
-            //判断返回的结果是否为空
-            
-            res.send(result);
-        })
-    }
-
-    })
-    
-})*/
+ 
 ////商品删除
 
 ////删除追溯资料
-app.use(config.delshpzl,function(req,res){
-    MongoClient.connect(url,(err, db)=>{
-        var dbo = db.db("allcontent");
-        let vvid=ObjectId(req.query.id);
-        if(req.query.zuishuid==="y"){
-            dbo.collection("zuishu").deleteOne({"_id":vvid},(err,result)=>{
-                res.send("删除成功！")
-            })
-        }else{
-        dbo.collection("spzl").deleteOne({"_id":vvid},(err,result)=>{
-            res.send("删除成功！")
-        })
-    }
-    })
-   
-})
+
 ////
 //测试页面
 app.use(config.test,function(req,res){
@@ -259,10 +255,6 @@ app.use(config.test,function(req,res){
     res.end(makehtml.makehtml('test'));
     
 })
-
-
-
-
 
 ///
 /*sessions处理*/
@@ -283,13 +275,13 @@ app.use('/me', (request, response, next) => {
     if (request.session) {
         console.log(`Wafer session success with openId=${request.session.userInfo.openId}`);
     }
-}); 
+}); */
 // 实现一个中间件，对于未处理的请求，都输出 "Response from express"
 app.use((request, response, next) => {
     response.write('Response from express');
     response.end();
 });
-*/
+
 // 监听端口，等待连接
  const port='8124';
 app.listen(port);
