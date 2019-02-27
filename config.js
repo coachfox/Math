@@ -35,6 +35,8 @@ module.exports = {
     getalltczl:"/getalltczl",
     deltczl:"/deltczl",
     delzszl:"/delzszl",
+    yycource:"/yycource",
+    yycourceini:"/yycourceini",
     serverPort: '8765', 
 
     // 小程序 appId 和 appSecret 
