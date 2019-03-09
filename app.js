@@ -4,8 +4,8 @@ var ObjectId = require('mongodb').ObjectID;
 var querystring = require('querystring');
 //需要下载模块
 const multiparty = require('multiparty');
-/*const waferSession = require('wafer-node-session'); 
-const MongoStore = require('connect-mongo')(waferSession);*/
+const waferSession = require('wafer-node-session'); 
+const MongoStore = require('connect-mongo')(waferSession);
 var MongoClient = require('mongodb').MongoClient;
 const path=require('path');
 //获取read方法
@@ -77,42 +77,40 @@ app.use(config.deltczl, function (req, res) {
   postgetfix.dodelete(currentdatabase,'aishangtczl',req,res)
 })
 
-//预约功能
+//预约团操功能
 
-//初始化预约功能，
+//初始化预约
 
 app.use(config.yycourceini,function(req,res){
-   /* rq: currentall,
-    userid: thisOpenId,
-    todaycourceid: that.data.todaycourceid,
-    //not going to class 上课状态
-    inclassstu: "n",
-    //yuyue staute 预约状态
-    yyflagstu:"n"*/
-
+  
     // JSON化传过来的数据
    
    var json1=JSON.parse(req.query.todaycourceid)
-  
     console.log(json1)
-    console.log(json1[1].tcid)
-    for(let i=0;i<json1.length;i++)
+
+   for(let i=0;i<json1.length;i++)
     {
-        var wherestr={rq:req.query.rq,userid:"req.query.userid",todaycourceid:json1[i].tcid}
+        var wherestr={rq:req.query.rq,userid:req.query.userid,todaycourceid:json1[i].tcid}
         ////检查今天的特定会员的课程是否存在在预约课程表里
-         ///如果存在，就不创建，不存在就创建
+        var cond={  "rq":req.query.rq,
+        "userid":req.query.userid,
+        "todaycourceid":json1[i].tcid,
+        "inclassstu":req.query.inclassstu,
+        "yyflagstu": req.query.yyflagstu
     }
-
-
-    
-   
-
+       ///如果存在，就不创建，不存在就创建
+        postgetfix.checkexist(currentdatabase,'aishangtcyyzl',wherestr,cond,res)
+      
+    }
 })
-//判断当前日期预约资料是否存在，若存在就不重建资料，不存在就重建
+//更新预约数据
 app.use(config.yycource, function (req, res) {
-var wherestr={rq:req.query.rq,userid:"req.query.userid",yycourceid:req.query.yycourceid}
-var cond={rq:req.query.rq,userid:"req.query.userid",yycourceid:req.query.yycourceid,stu:req.query.stu,gz:req.query.gz}
-postgetfix.checkexist(currentdatabase,'aishangtcyyzl',wherestr,cond,res)
+var wherestr={rq:req.query.rq,userid:req.query.userid,todaycourceid:req.query.todaycourceid}
+var cond={$set:{yyflagstu:req.query.yyflagstu}}
+console.log( wherestr)
+
+postgetfix.nomalupdate(currentdatabase,'aishangtcyyzl',wherestr,cond,res)
+
 
   })
 ///////////////////////
@@ -259,7 +257,7 @@ app.use(config.test,function(req,res){
 ///
 /*sessions处理*/
 // 添加会话中间件，登录地址是 /login
-/*app.use(waferSession({ 
+app.use(waferSession({ 
     appId: config.appId, 
     appSecret: config.appSecret, 
     loginPath: '/login',
@@ -275,7 +273,7 @@ app.use('/me', (request, response, next) => {
     if (request.session) {
         console.log(`Wafer session success with openId=${request.session.userInfo.openId}`);
     }
-}); */
+}); 
 // 实现一个中间件，对于未处理的请求，都输出 "Response from express"
 app.use((request, response, next) => {
     response.write('Response from express');
@@ -285,6 +283,5 @@ app.use((request, response, next) => {
 // 监听端口，等待连接
  const port='8124';
 app.listen(port);
-
 // 输出服务器启动日志
 console.log(`Server listening at http://127.0.0.1:${port}`);
